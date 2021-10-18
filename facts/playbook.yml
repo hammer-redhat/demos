@@ -1,10 +1,9 @@
 ---
-- name: Get failed services
+- name: Get your facts straight
   hosts: all
   become: yes
 
   tasks:
-
   - name: Get Service Facts
     service_facts: 
 
