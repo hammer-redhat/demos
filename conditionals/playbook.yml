@@ -12,4 +12,4 @@
 
     - name: Get service facts. 
       service_facts: 
-        var: ansible_facts.services['httpd.service']['state']
+        var: ansible_facts.services['httpd']
