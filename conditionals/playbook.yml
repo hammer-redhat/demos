@@ -7,13 +7,19 @@
     - name: Required packages are installed and up to date
       yum:
         name: httpd
-        state: present
+        state: latest 
       when: ansible_distribution == "RedHat"
       register: httpd_state
 
+    - name: Start the httpd service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+      when: httpd_state.changed
+
     - name: Gather service facts
       service_facts:
-#      when: httpd_state.changed
 
     - name: Get httpd facts.
       debug: 
