@@ -3,16 +3,11 @@
   hosts: all 
   become: yes
   vars_files:
-    - test.yml
-    - test2.yml
+    - variables.yml
 
   tasks:
     - name: yum install
       yum:
-        name: "{{ packages }}"
+        name: "{{ item }}"
         state: present
-
-    - name: yum install
-      yum:
-        name: "{{ package }}"
-        state: present
+      loop: packages
