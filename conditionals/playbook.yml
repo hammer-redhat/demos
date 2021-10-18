@@ -13,8 +13,8 @@
 
     - name: Gather service facts
       service_facts:
-      when: httpd_state.changed
+#      when: httpd_state.changed
 
     - name: Get httpd facts.
       debug: 
-        var: services.httpd
+        var: httpd.service
