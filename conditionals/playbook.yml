@@ -9,3 +9,9 @@
         name: httpd
         state: present
       when: ansible_distribution == "RedHat"
+
+    - name: Get service facts. 
+      service_facts: 
+        name: httpd
+        state: running
+      
