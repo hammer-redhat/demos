@@ -1,12 +1,12 @@
 ---
 packages:
-  - package_name: nginx
+  - package_name: httpd
     desired_state: latest
 
   - package_name: firewalld
     desired_state: latest
 
-  - package_name: httpd
+  - package_name: nginx
     desired_state: absent
   
   - package_name: iptables
