@@ -15,4 +15,4 @@
 
     - name: Get httpd facts.
       debug: 
-        var: ansible_facts.services.httpd.service
+        var: ansible_facts.services.httpd.service.state
