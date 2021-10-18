@@ -12,6 +12,7 @@
 
     - name: Gather service facts
       service_facts:
+      when: httpd.changed
 
     - name: Get httpd facts.
       debug: 
