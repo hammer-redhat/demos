@@ -1,6 +1,6 @@
 ---
 - name: Get your facts straight
-  hosts: all
+  hosts: nodes
   become: yes
 #  gather_facts: no
 
