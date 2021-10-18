@@ -10,7 +10,9 @@
 
   - name: display ipv4 address.
     debug:
-      var: ansible_default_ipv4.address
+      var: 
+        - ansible_default_ipv4.address
+        - ansible_dns
 
 #  - name: print service facts
 #    debug:
