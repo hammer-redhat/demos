@@ -8,7 +8,7 @@
   tasks:
     - name: Install required packages.
       yum:
-        name: "{{ item.name }}"
-        state: "{{ item.state }}"
+        name: "{{ item.package_name }}"
+        state: "{{ item.desired_state }}"
       loop:
         - "{{ packages }}"
