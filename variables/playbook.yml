@@ -10,5 +10,4 @@
       yum:
         name: "{{ item.package_name }}"
         state: "{{ item.desired_state }}"
-      loop:
-        - "{{ packages }}"
+      loop: "{{ packages }}"
