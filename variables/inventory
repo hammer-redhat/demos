@@ -1,6 +1,6 @@
 [controller]
-192.168.1.122		ansible_connection=local
+controller		ansible_connection=local
 
 [nodes]
-192.168.86.123
-192.168.86.124
+node1
+node2
