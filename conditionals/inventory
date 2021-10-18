@@ -1,4 +1,4 @@
-[controller]
+[ansible_controller]
 controller		ansible_connection=local
 
 [nodes]
