@@ -8,4 +8,4 @@
       yum:
         name: httpd
         state: present
-      when: ansible_distribution  == "RedHat"
+      when: ansible_distribution  != "RedHat"
