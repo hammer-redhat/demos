@@ -9,11 +9,12 @@
         name: httpd
         state: present
       when: ansible_distribution == "RedHat"
+      register: httpd_state
 
     - name: Gather service facts
       service_facts:
-      when: httpd.changed
+      when: httpd_state.changed
 
     - name: Get httpd facts.
       debug: 
-        var: ansible_facts.services.httpd.service.state
+        var: services.httpd
