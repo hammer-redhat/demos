@@ -12,6 +12,6 @@
     debug:
       var: ansible_default_ipv4.address
 
-  - name: print service facts
-    debug:
-      var: ansible_facts.services
+#  - name: print service facts
+#    debug:
+#      var: ansible_facts.services
