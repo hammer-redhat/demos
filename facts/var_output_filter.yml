@@ -4,8 +4,13 @@
   become: yes
 
   tasks:
+
   - name: Get Service Facts
     service_facts:
+
+  - name: display ipv4 address.
+    debug:
+      var: ansible_default_ipv4.address
 
   - name: print service facts
     debug:
