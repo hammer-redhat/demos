@@ -13,8 +13,8 @@
                  -Playbook keywords play(most general) and tasks(most specific)
         Highest: -Variables vars/vars_files
         Trumps all: --extra-vars or -e. 
-    ![](image.PNG)
-    
+![](image.PNG)
+
 ## 2: Facts
         - Generate host facts: CLI/Playbook
         - Generate service facts: Playbook
