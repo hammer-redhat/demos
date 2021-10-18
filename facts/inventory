@@ -4,6 +4,3 @@
 [nodes]
 192.168.86.123
 192.168.86.124
-
-[controller:children]
-nodes

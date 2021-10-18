@@ -16,4 +16,3 @@
       yum:
         name: "{{ package }}"
         state: present
-
