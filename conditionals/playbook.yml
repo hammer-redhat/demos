@@ -1,0 +1,11 @@
+---
+- name: Deploy and start Apache HTTPD service
+  hosts: nodes 
+  become: true
+ 
+  tasks:
+    - name: Required packages are installed and up to date
+      yum:
+        name: httpd
+        state: present
+      when: ansible_distribution  == "RedHat"

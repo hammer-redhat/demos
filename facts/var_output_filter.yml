@@ -1,0 +1,16 @@
+---
+- name: Get failed services
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Get Service Facts
+    service_facts:
+
+  - name: Get running services
+    set_fact:
+      services_running: "{{ ansible_facts | json_query('services.* | [?state == `stopped`].name' and [?status == `enabled`].name ) }}"
+
+  - name: Debug
+    debug:
+      msg: "{{ services_running }}"
