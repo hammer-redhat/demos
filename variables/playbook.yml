@@ -1,6 +1,6 @@
 ---
 - name: Test vars
-  hosts: all 
+  hosts: nodes 
   become: yes
   vars_files:
     - variables.yml
