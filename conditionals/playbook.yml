@@ -12,6 +12,4 @@
 
     - name: Get service facts. 
       service_facts: 
-        name: httpd
-        state: running
-      
+        var: ansible_facts.services['httpd.service']['state']
