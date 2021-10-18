@@ -7,10 +7,6 @@
   - name: Get Service Facts
     service_facts:
 
-  - name: Get running services
-    set_fact:
-      services_running: "{{ ansible_facts | json_query('services.* | [?state == `stopped`].name' and [?status == `enabled`].name ) }}"
-
-  - name: Debug
+  - name: print service facts
     debug:
-      msg: "{{ services_running }}"
+      var: ansible_facts.services
