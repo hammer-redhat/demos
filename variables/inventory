@@ -6,5 +6,5 @@ node1
 node2
 
 [nodes:vars]
-selinux_policy: targeted
-selinux_state: enforcing
+selinux_policy=targeted
+selinux_state=enforcing
