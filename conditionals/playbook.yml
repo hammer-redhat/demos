@@ -10,6 +10,9 @@
         state: present
       when: ansible_distribution == "RedHat"
 
-    - name: Get service facts. 
-      service_facts: 
+    - name: Gather service facts
+      service_facts:
+
+    - name: Get httpd facts.
+      debug: 
         var: ansible_facts.services['httpd']
