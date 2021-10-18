@@ -1,9 +1,14 @@
 ---
 # VARS FILE 
 packages:
-  name: nginx
-  name: firewalld
+  - name: nginx
+    state: latest
 
-remove:
-  name: httpd
-  name: iptables
+  - name: firewalld
+    state: latest
+
+  - name: httpd
+    state: absent
+  
+  - name: iptables
+    state: absent
