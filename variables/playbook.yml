@@ -11,3 +11,8 @@
         name: "{{ item.package_name }}"
         state: "{{ item.desired_state }}"
       loop: "{{ packages }}"
+
+    - name: SELinux module
+      selinux:
+        policy: "{{ selinux_policy }}"
+        state: "{{ selinux_state }}"

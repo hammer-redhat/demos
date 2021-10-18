@@ -4,3 +4,7 @@ controller		ansible_connection=local
 [nodes]
 node1
 node2
+
+[nodes:vars]
+selinux_policy: targeted
+selinux_state: enforcing
