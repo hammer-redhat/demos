@@ -11,4 +11,4 @@
         name: "{{ item.name }}"
         state: "{{ item.state }}"
       loop:
-        - packages
+        - "{{ packages }}"
