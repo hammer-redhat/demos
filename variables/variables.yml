@@ -1,0 +1,9 @@
+---
+# VARS FILE 
+packages:
+  - nginx
+  - firewalld
+
+remove:
+  - httpd
+  - iptables
