@@ -8,7 +8,9 @@
       yum:
         name: httpd
         state: latest 
-      when: ansible_distribution == "RedHat"
+      when: 
+        - ansible_distribution == "RedHat"
+        - ansible_major_version == "7"
       register: httpd_state
 
     - name: Start the httpd service
