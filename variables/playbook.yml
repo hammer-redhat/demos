@@ -7,19 +7,19 @@
 
   tasks:
 
-    - name: Ping hosts
+    - name: FIRST TASK | Ping hosts | Variable included in task
       connection: "{{ connection_type }}"
       ping:
       vars: 
         - connection_type: ssh
 
-    - name: Maintain desired state for packages.
+    - name: SECOND TASK | Variables in vars_files | Maintain desired state for packages
       yum:
         name: "{{ item.package_name }}"
         state: "{{ item.desired_state }}"
       loop: "{{ packages }}"
 
-    - name: SELinux module
+    - name: THIRD TASK | Variables in inventory file | SELinux module
       selinux:
         policy: "{{ selinux_policy }}"
         state: "{{ selinux_state }}"
