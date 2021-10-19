@@ -7,7 +7,7 @@ packages:
     desired_state: latest
 
   - package_name: nginx
-    desired_state: removed
+    desired_state: absent
   
   - package_name: iptables
-    desired_state: removed
+    desired_state: absent
