@@ -6,6 +6,13 @@
     - variables.yml
 
   tasks:
+
+    - name: Ping hosts
+      connection: "{{ connection_type }}"
+      ping:
+      vars: 
+        - connection_type: ssh
+
     - name: Maintain desired state for packages.
       yum:
         name: "{{ item.package_name }}"
@@ -16,9 +23,3 @@
       selinux:
         policy: "{{ selinux_policy }}"
         state: "{{ selinux_state }}"
-
-    - name: Ping hosts
-      connection: "{{ connection_type }}"
-      ping:
-      vars: 
-        - connection_type: ssh
