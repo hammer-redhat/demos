@@ -1,5 +1,5 @@
 # Ansible: Variables, Facts and Conditionals
-## Chris Hammer, Senior Consultant, Red Hat
+## Chris Hammer, Senior Consultant | <img src="redhat-logo.png" style="width:100px;"/>
 ---
 
 
