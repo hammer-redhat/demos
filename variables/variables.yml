@@ -9,5 +9,5 @@ packages:
   - package_name: nginx
     desired_state: absent
   
-  - package_name: iptables
+  - package_name: wget
     desired_state: absent
