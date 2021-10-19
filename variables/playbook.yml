@@ -2,6 +2,7 @@
 - name: Testing variables
   hosts: nodes 
   become: yes
+  gather_facts: no
   vars_files:
     - variables.yml
 
