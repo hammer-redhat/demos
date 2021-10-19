@@ -1,5 +1,5 @@
 ---
-- name: Test vars
+- name: Testing variables
   hosts: nodes 
   become: yes
   vars_files:
