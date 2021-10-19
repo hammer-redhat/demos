@@ -13,7 +13,8 @@
                  -Playbook keywords play(most general) and tasks(most specific)
         Highest: -Variables vars/vars_files
         Trumps all: --extra-vars or -e. 
-![](image.PNG)
+## Variable Precedence
+<img src="image.PNG" style="width:400px;"/>
 
 ## 2: Facts
         - Generate host facts: CLI/Playbook
