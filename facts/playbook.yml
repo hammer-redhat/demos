@@ -10,14 +10,21 @@
       var: ansible_facts
     tags: first_task
 
-  - name: SECOND TASK | Get Service Facts
-    service_facts:
+  - name: SECOND TASK | display a specific fact
+    debug:
+      var: ansible_facts.hostname
     tags: second_task
 
-  - name: THIRD TASK | display ipv4 address.
+  - name: THIRD TASK | Get Service Facts
+    service_facts:
+    tags: third_task
+
+  - name: FOURTH TASKS | display ipv4 address.
     debug:
       msg: "IP {{ansible_default_ipv4.address}} DNS {{ ansible_dns }}"
+    tags: fourth_task
 
-  - name: FOURTH TASKS | print service facts
+  - name: FIFTH TASK | print service facts
     debug:
       var: ansible_facts.services['httpd.service']
+    tags: fifth_task
