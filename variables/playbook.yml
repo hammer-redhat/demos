@@ -10,9 +10,11 @@
 
     - name: FIRST TASK | Ping hosts | Variable included in task
       connection: "{{ connection_type }}"
-      ping:
+      yum: 
+        name: "{{ install_package }}"
+        state: latest
       vars: 
-        - connection_type: ssh
+        - install_package: firewalld
       tags: first_task
 
     - name: SECOND TASK | Variables in vars_files | Maintain desired state for packages
