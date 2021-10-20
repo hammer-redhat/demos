@@ -2,16 +2,23 @@
 - name: Get your facts straight
   hosts: nodes
   become: yes
-#  gather_facts: no
 
   tasks:
-  - name: Get Service Facts
-    service_facts: 
+
+  - name: FIRST TASK | Display facts
+    debug:
+      var: ansible_facts
+    tags: first_task
+
+
+  - name: TASK TWO | Get Service Facts
+    service_facts:
+    tags: second_task
 
   - name: display ipv4 address.
     debug:
       msg: "IP {{ansible_default_ipv4.address}} DNS {{ ansible_dns }}"
 
-#  - name: print service facts
-#    debug:
-#      var: ansible_facts.services['httpd.service']
+  - name: print service facts
+    debug:
+      var: ansible_facts.services['httpd.service']
