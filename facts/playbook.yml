@@ -19,7 +19,7 @@
     service_facts:
     tags: third_task
 
-  - name: FOURTH TASKS | display dns fact.
+  - name: FOURTH TASKS | display lvm fact.
     debug:
       var: ansible_lvm
     tags: fourth_task
