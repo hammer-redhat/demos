@@ -5,14 +5,10 @@
 
 ## Objectives:
 ##    1: Variables
-    - Declaring variables 
-    - Calling Variables
+    - Defining variables 
+    - Using Variables
     - Variable Precedence
-        Lowest:  -Configuration Settings - ansible.cfg
-                 -Command-line options
-                 -Playbook keywords play(most general) and tasks(most specific)
-        Highest: -Variables vars/vars_files
-        Trumps all: --extra-vars or -e. 
+        
 ## Variable Precedence
 <img src="image.PNG" style="width:400px;"/>
 
