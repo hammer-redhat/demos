@@ -13,6 +13,7 @@
   - name: SECOND TASK | using a fact as a variable
     lineinfile:
       path: /home/chrhamme/hostname_test
+      regex: "^this is my hostname:"
       line: "this is my hostname: {{ ansible_hostname }}"
       state: present
       create: yes
