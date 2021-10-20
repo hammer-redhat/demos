@@ -12,7 +12,7 @@
 
   - name: SECOND TASK | using a fact as a variable
     lineinfile:
-      path: /home/chrhamme/
+      path: /home/chrhamme/hostname_test
       line: "this is my hostname: {{ ansible_hostname }}"
       state: present
       create: yes
