@@ -19,9 +19,9 @@
     service_facts:
     tags: third_task
 
-  - name: FOURTH TASKS | display dns nameserver.
+  - name: FOURTH TASKS | display dns fact.
     debug:
-      var: ansible_dns
+      var: ansible_lvm
     tags: fourth_task
 
   - name: FIFTH TASK | print service facts
