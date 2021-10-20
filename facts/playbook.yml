@@ -11,8 +11,11 @@
     tags: first_task
 
   - name: SECOND TASK | display a specific fact
-    debug:
-      var: ansible_facts.hostname
+    lineinfile:
+      path: /etc/hosts
+      line: "{{ default_ipv4.address }}" "{{ ansible_facts.fqdn }}" "{{ ansible_facts.hostname }}"
+      state: present
+
     tags: second_task
 
   - name: THIRD TASK | display lvm fact.
