@@ -17,6 +17,9 @@
         - Generate service facts: Playbook
         - Using facts as variables
         - Filtering Facts (demo'd in Conditionals)
+### Links:
+https://docs.ansible.com/ansible/latest/user_guide/playbooks_vars_facts.html#ansible-facts
+https://docs.ansible.com/ansible/latest/user_guide/playbooks_vars_facts.html#adding-custom-facts 
     
 ## 3: Conditionals 
         - Register
