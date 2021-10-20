@@ -13,7 +13,7 @@
   - name: SECOND TASK | display a specific fact
     lineinfile:
       path: /etc/hosts
-      line: "{{ ansible_default_ipv4.address }} {{ ansible_facts.fqdn }} {{ ansible_facts.hostname }}"
+      line: "{{ ansible_facts.default_ipv4.address }} {{ ansible_facts.fqdn }} {{ ansible_facts.hostname }}"
       state: present
     tags: second_task
 
