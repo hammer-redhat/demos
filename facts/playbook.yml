@@ -7,18 +7,17 @@
 
   - name: FIRST TASK | Display facts
     debug:
-      var: ansible_facts
+      msg: "{{ ansible_facts }}"
     tags: first_task
 
-
-  - name: TASK TWO | Get Service Facts
+  - name: SECOND TASK | Get Service Facts
     service_facts:
     tags: second_task
 
-  - name: display ipv4 address.
+  - name: THIRD TASK | display ipv4 address.
     debug:
       msg: "IP {{ansible_default_ipv4.address}} DNS {{ ansible_dns }}"
 
-  - name: print service facts
+  - name: FOURTH TASKS | print service facts
     debug:
       var: ansible_facts.services['httpd.service']
