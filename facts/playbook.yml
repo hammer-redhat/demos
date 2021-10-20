@@ -12,9 +12,10 @@
 
   - name: SECOND TASK | using a fact as a variable
     lineinfile:
-      path: /etc/resolv.conf
-      line: "nameserver {{ ansible_facts['dns']['nameserver'] }}"
+      path: /home/chrhamme/
+      line: "this is my hostname: {{ ansible_hostname }}"
       state: present
+      create: yes
     tags: second_task
 
   - name: THIRD TASK | display a specific fact.
