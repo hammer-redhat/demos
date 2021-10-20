@@ -10,14 +10,14 @@
       var: ansible_facts
     tags: first_task
 
-  - name: SECOND TASK | display a specific fact
+  - name: SECOND TASK | using a fact as a variable
     lineinfile:
-      path: /etc/hosts
-      line: "{{ ansible_facts.default_ipv4.address }} {{ ansible_facts.fqdn }} {{ ansible_facts.hostname }}"
+      path: /etc/resolv.conf
+      line: "nameserver {{ ansible_dns }}"
       state: present
     tags: second_task
 
-  - name: THIRD TASK | display lvm fact.
+  - name: THIRD TASK | display a specific fact.
     debug:
       var: ansible_lvm
     tags: third_task
