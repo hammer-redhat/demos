@@ -19,9 +19,9 @@
     service_facts:
     tags: third_task
 
-  - name: FOURTH TASKS | display ipv4 address.
+  - name: FOURTH TASKS | display dns nameserver.
     debug:
-      msg: "IP {{ansible_default_ipv4.address}} DNS {{ ansible_dns }}"
+      var: ansible_dns
     tags: fourth_task
 
   - name: FIFTH TASK | print service facts
