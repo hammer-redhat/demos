@@ -7,4 +7,4 @@ node2
 
 [nodes:vars]
 selinux_policy=targeted
-selinux_state=permissive
+selinux_state=enforcing

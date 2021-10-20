@@ -8,7 +8,7 @@
 
   tasks:
 
-    - name: FIRST TASK | Ping hosts | Variable included in task
+    - name: FIRST TASK | install package | Variable included in task
       yum: 
         name: "{{ install_package }}"
         state: latest
