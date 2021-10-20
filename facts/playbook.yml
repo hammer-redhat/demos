@@ -13,7 +13,7 @@
   - name: SECOND TASK | using a fact as a variable
     lineinfile:
       path: /etc/resolv.conf
-      line: "nameserver {{ ansible_dns }}"
+      line: "nameserver {{ ansible_facts['dns']['nameserver'] }}"
       state: present
     tags: second_task
 
