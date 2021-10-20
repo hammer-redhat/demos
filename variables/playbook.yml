@@ -9,7 +9,6 @@
   tasks:
 
     - name: FIRST TASK | Ping hosts | Variable included in task
-      connection: "{{ connection_type }}"
       yum: 
         name: "{{ install_package }}"
         state: latest
