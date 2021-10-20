@@ -27,4 +27,5 @@ https://docs.ansible.com/ansible/latest/user_guide/playbooks_vars_facts.html#add
         - Including/filtering facts
 
 
-## Next Session: Ansible Roles
+## Next Session: Ansible Roles; 03 November - Time-TBD
+## Future Sessions: Administering Ansible Tower
