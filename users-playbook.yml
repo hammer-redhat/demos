@@ -1,0 +1,7 @@
+---
+- name: Create users and configure SSHD
+  hosts: all
+  become: true
+
+  roles: 
+    - users
