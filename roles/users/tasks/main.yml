@@ -7,3 +7,11 @@
     shell: "{{ users.shell }}"
     state: "{{ users.state }}"
     password: "{{ users.password }}"
+
+- name: Disable Root login via SSH.
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regex: '^#PermitRootLogin'
+    line: PermitRootLogin no
+    create: yes
+  notify: sshd

@@ -1,2 +1,6 @@
 ---
 # handlers file for users
+- name: sshd
+  service:
+    name: sshd
+    state: restarted
