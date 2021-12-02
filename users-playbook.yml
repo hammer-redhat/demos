@@ -2,6 +2,7 @@
 - name: Create users and configure SSHD
   hosts: all
   become: true
-
+  vars_files:
+    - roles/users/vars/users_vars.yml
   roles: 
     - users
