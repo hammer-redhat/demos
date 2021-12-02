@@ -1,14 +1,23 @@
 ---
 # vars file for users
 users:
-  - name: user01
-    pass: redhat123
-    membership: wheel
-    shells: /bin/bash
-    status: present
+  - username: user01
+    password: redhat123
+    update_password: on_create
+    groups: wheel
+    shell: /bin/bash
+    user_state: present
 
-  - name: user02
-    pass: redhat123
-    membership: wheel
-    shells: /bin/bash
-    status: present
+  - username: user02
+    password: redhat123
+    update_password: on_create
+    groups: wheel
+    shell: /bin/bash
+    user_state: present
+
+  - username: user03
+    password: redhat123
+    update_password: on_create
+    groups: wheel
+    shell: /bin/bash
+    user_state: present
