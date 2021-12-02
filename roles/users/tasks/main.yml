@@ -3,9 +3,9 @@
 - name: Create users
   user:
     name: "{{ users.name }}"
-    group: "{{ users.group }}"
-    shell: "{{ users.shell }}"
-    state: "{{ users.state }}"
+    group: "{{ users.membership }}"
+    shell: "{{ users.shells }}"
+    state: "{{ users.status }}"
     update_password: "{{ users.pass }}"
 
 - name: Disable Root login via SSH.

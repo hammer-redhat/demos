@@ -3,12 +3,12 @@
 users:
   - name: user01
     pass: redhat123
-    group: wheel
-    shell: /bin/bash
-    state: present
+    membership: wheel
+    shells: /bin/bash
+    status: present
 
   - name: user02
     pass: redhat123
-    group: wheel
-    shell: /bin/bash
-    state: present
+    membership: wheel
+    shells: /bin/bash
+    status: present
