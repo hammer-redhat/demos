@@ -1,31 +1,27 @@
-# Ansible: Variables, Facts and Conditionals
+# Ansible: Roles
 ## Chris Hammer, Senior Consultant | <img src="redhat-logo.png" style="width:100px;"/>
 ---
 
 
 ## Objectives:
-##    1: Variables
-    - Defining variables 
-    - Using Variables
-    - Variable Precedence
+##    1: What are roles?
+    - Directory structure
+    - Why use them?
+    - How do you use them?
         
 ## Variable Precedence
 <img src="image.PNG" style="width:400px;"/>
 
-## 2: Facts
-        - Generate host facts: CLI/Playbook
-        - Generate service facts: Playbook
-        - Using facts as variables
-        - Filtering Facts (demo'd in Conditionals)
-### Links:
-https://docs.ansible.com/ansible/latest/user_guide/playbooks_vars_facts.html#ansible-facts
-https://docs.ansible.com/ansible/latest/user_guide/playbooks_vars_facts.html#adding-custom-facts 
-    
-## 3: Conditionals 
-        - Register
-        - When
-        - Including/filtering facts
+## 2: Creating a Custom Role
+        - ansible-galaxy init <role_name>
+        - 
 
 
-## Next Session: Ansible Roles; 03 November - Time-TBD
-## Future Sessions: Administering Ansible Tower
+## 3: RHEL System Roles 
+        - What are they?
+        - How do I get them?
+        - Are they supported?
+
+
+## Next Session: TBD After the holiday break.  
+## Future Sessions: Administering Ansible Tower 
