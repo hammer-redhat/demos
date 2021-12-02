@@ -1,0 +1,27 @@
+---
+
+- name: Create user accounts
+  user:
+    name: "{{ item.username }}"
+    groups: "{{ item.groups }}"
+    comment: "{{ item.username }}"
+    state: "{{ item.user_state }}"
+  loop: "{{ users }}"
+
+- name: Add authorized keys
+  authorized_key:
+    user: "{{ item.username }}"
+    key: "{{ lookup('file', 'files/'+ item.username + '.key.pub') }}"
+  loop: "{{ users }}"
+
+- name: Change password to expire in 99999 days. 
+  shell: chage -M  99999 "{{ item.username }}"
+  loop: "{{ users }}"
+
+- name: Add AllowUsers lineinfile in /etc/ssh/sshd_config
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regex: '^AllowUsers'
+    line: AllowUsers chrhamme testuser01 testuser02 testuser03
+    state: present
+  notify: restart sshd

@@ -1,0 +1,23 @@
+---
+users:
+  - username: testuser01
+    password: redhat
+    update_password: on_create
+    groups: wheel
+    shell: /bin/bash
+    user_state: present
+
+  - username: testuser02
+    password: redhat
+    update_password: on_create
+    groups: wheel
+    shell: /bin/bash
+    user_state: present
+
+  - username: testuser03
+    password: redhat
+    update_password: on_create
+    groups: wheel
+    shell: /bin/bash
+    user_state: present
+
