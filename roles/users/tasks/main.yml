@@ -1,5 +1,4 @@
 ---
-
 - name: Create user accounts
   user:
     name: "{{ item.username }}"
@@ -17,11 +16,3 @@
 - name: Change password to expire in 99999 days. 
   shell: chage -M  99999 "{{ item.username }}"
   loop: "{{ users }}"
-
-- name: Add AllowUsers lineinfile in /etc/ssh/sshd_config
-  lineinfile:
-    path: /etc/ssh/sshd_config
-    regex: '^AllowUsers'
-    line: AllowUsers chrhamme testuser01 testuser02 testuser03
-    state: present
-  notify: restart sshd
