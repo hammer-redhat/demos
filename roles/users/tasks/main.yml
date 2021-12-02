@@ -6,7 +6,7 @@
     group: "{{ users.group }}"
     shell: "{{ users.shell }}"
     state: "{{ users.state }}"
-    password: "{{ users.pass }}"
+    update_password: "{{ users.pass }}"
 
 - name: Disable Root login via SSH.
   lineinfile:

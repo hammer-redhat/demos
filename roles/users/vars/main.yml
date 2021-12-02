@@ -2,13 +2,13 @@
 # vars file for users
 users:
   - name: user01
-    pass: 'redhat123'
+    pass: redhat123
     group: wheel
     shell: /bin/bash
     state: present
 
   - name: user02
-    pass: 'redhat123'
+    pass: redhat123
     group: wheel
     shell: /bin/bash
     state: present
