@@ -17,7 +17,7 @@
   lineinfile:
     path: /etc/ssh/sshd_config
     regex: '^#PermitRootLogin'
-    line: PermitRootLogin no
+    line: PermitRootLogin yes
     state: present
   notify: sshd
 
@@ -28,4 +28,3 @@
     line: PubkeyAuthentication yes
     state: present
   notify: sshd
-  
