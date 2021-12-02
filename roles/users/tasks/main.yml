@@ -4,11 +4,12 @@
   user:
     name: "{{ item.username }}"
     groups: "{{ item.groups }}"
+    password: "{{ item.password }}"
     comment: "{{ item.username }}"
     state: "{{ item.user_state }}"
   loop: "{{ users }}"
 
-- name: Change password to expire in 99999 days. 
+- name: Change password expiration.
   shell: chage -M  99999 "{{ item.username }}"
   loop: "{{ users }}"
 
