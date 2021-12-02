@@ -4,10 +4,9 @@
   user:
     name: "{{ item.username }}"
     groups: "{{ item.groups }}"
-    password: "{{ item.password }}"
     comment: "{{ item.username }}"
     state: "{{ item.user_state }}"
-    update_password: always
+    generate_ssh_key: yes
   loop: "{{ users }}"
 
 - name: Change password expiration.
