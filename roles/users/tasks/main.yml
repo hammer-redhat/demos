@@ -1,2 +1,9 @@
 ---
 # tasks file for users
+- name: Create users
+  user:
+    name: "{{ users.name }}"
+    group: "{{ users.group }}"
+    shell: "{{ users.shell }}"
+    state: "{{ users.state }}"
+    password: "{{ users.password }}"
