@@ -20,3 +20,12 @@
     line: PermitRootLogin no
     state: present
   notify: sshd
+
+- name: Ensure PermitRootLogin in /etc/ssh/sshd_config is set to no. 
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regex: '^#PubkeyAuthentication'
+    line: PubkeyAuthentication yes
+    state: present
+  notify: sshd
+  
