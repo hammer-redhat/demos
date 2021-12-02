@@ -6,7 +6,12 @@
     groups: "{{ item.groups }}"
     comment: "{{ item.username }}"
     state: "{{ item.user_state }}"
-    generate_ssh_key: yes
+  loop: "{{ users }}"
+
+- name: Add authorized keys
+  authorized_key:
+    user: "{{ item.username }}"
+    key: "{{ lookup('file', 'files/'+ item.username + '.key.pub') }}"
   loop: "{{ users }}"
 
 - name: Change password expiration.
