@@ -4,7 +4,6 @@
   user:
     name: "{{ users.username }}"
     group: "{{ users.groups }}"
-    shell: "{{ users.shell }}"
     state: "{{ users.user_state }}"
     password: "{{ users.password }}"
     update_password: always
