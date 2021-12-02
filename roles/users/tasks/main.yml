@@ -1,19 +1,21 @@
 ---
-# tasks file for users
-- name: Create users
+# tasks file for user.
+- name: Create user accounts
   user:
-    name: "{{ users.username }}"
-    group: "{{ users.groups }}"
-    state: "{{ users.user_state }}"
-    password: "{{ users.password }}"
-    update_password: always
-  loop: 
-    - "{{ users }}"
+    name: "{{ item.username }}"
+    groups: "{{ item.groups }}"
+    comment: "{{ item.username }}"
+    state: "{{ item.user_state }}"
+  loop: "{{ users }}"
 
-- name: Disable Root login via SSH.
+- name: Change password to expire in 99999 days. 
+  shell: chage -M  99999 "{{ item.username }}"
+  loop: "{{ users }}"
+
+- name: Add AllowUsers lineinfile in /etc/ssh/sshd_config
   lineinfile:
     path: /etc/ssh/sshd_config
     regex: '^#PermitRootLogin'
     line: PermitRootLogin no
-    create: yes
+    state: present
   notify: sshd
