@@ -7,7 +7,8 @@
     state: "{{ users.user_state }}"
     password: "{{ users.password }}"
     update_password: always
-  loop: users
+  loop: 
+    - users
 
 - name: Disable Root login via SSH.
   lineinfile:
