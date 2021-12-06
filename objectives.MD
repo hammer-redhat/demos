@@ -37,6 +37,7 @@
 ## 3: RHEL System Roles 
         - What are they?
                 - RHEL System Roles is a collection of Ansible roles and modules that provide a stable and consistent configuration interface to automate and manage multiple releases of Red Hat Enterprise Linux.
+                https://access.redhat.com/articles/3050101 
                 - Examples:
 <img src="rhel-system-roles.PNG" style="width:800px;"/> 
 
@@ -54,7 +55,6 @@
         - Are they supported?
                 - The effort is based on development of the Linux System Roles upstream project.
                 https://linux-system-roles.github.io/ 
-
-
+                
 ## Next Session: TBD After the holiday break.  
 ## Future Sessions: Administering Ansible Tower 
