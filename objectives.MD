@@ -5,22 +5,55 @@
 
 ## Objectives:
 ##    1: What are roles?
-    - Directory structure
-    - Why use them?
-    - How do you use them?
+    - Why use them? Pros/Cons
+    - How to call a role in a playbook.
         
-## Variable Precedence
-<img src="image.PNG" style="width:400px;"/>
+## Role Directory Structure
+        testfordemo/
+        ├── defaults
+        │   └── main.yml
+        ├── files
+        ├── handlers
+        │   └── main.yml
+        ├── meta
+        │   └── main.yml
+        ├── README.md
+        ├── tasks
+        │   └── main.yml
+        ├── templates
+        ├── tests
+        │   ├── inventory
+        │   └── test.yml
+        └── vars
+        └── main.yml
 
 ## 2: Creating a Custom Role
         - ansible-galaxy init <role_name>
-        - 
-
+        - tree roles/<role_name> 
+        - vim roles/<role_name>/tasks/main.yml
+        - Add the tasks you want to run against a host.
+        - Then create a playbook that calls your role name. 
 
 ## 3: RHEL System Roles 
         - What are they?
+                - RHEL System Roles is a collection of Ansible roles and modules that provide a stable and consistent configuration interface to automate and manage multiple releases of Red Hat Enterprise Linux.
+                - Examples:
+<img src="rhel-system-roles.PNG" style="width:800px;"/> 
+
         - How do I get them?
+                - The RHEL System Roles are supported as provided from the following methods:
+                - As an RPM package in the RHEL 7 Extras repository
+                - As an RPM package in the RHEL 8 application Streams repository
+                - As a supported collection in the Red Hat Automation Hub
+
+                On your Ansible Controller:
+                - # subscription-manager  repos --enable=rhel-7-server-extras-rpms --enable=rhel-7-server-ansible-2.9-rpms
+                - # yum install rhel-system-roles  ansible
+                - # vim test-playbook.yml
+                - Then include the vars for the role you wish to run as well as call the role within the playbook.
         - Are they supported?
+                - The effort is based on development of the Linux System Roles upstream project.
+                https://linux-system-roles.github.io/ 
 
 
 ## Next Session: TBD After the holiday break.  
