@@ -46,10 +46,11 @@
                 - As an RPM package in the RHEL 7 Extras repository
                 - As an RPM package in the RHEL 8 application Streams repository
                 - As a supported collection in the Red Hat Automation Hub
+                - Default location: /usr/share/ansible/roles/rhel-system-roles.<role-name>
 
-                On your Ansible Controller:
-                - # subscription-manager  repos --enable=rhel-7-server-extras-rpms --enable=rhel-7-server-ansible-2.9-rpms
-                - # yum install rhel-system-roles  ansible
+                On your Existing Ansible Controller:
+                - # subscription-manager  repos --enable=rhel-7-server-extras-rpms
+                - # yum install rhel-system-roles
                 - # vim test-playbook.yml
                 - Then include the vars for the role you wish to run as well as call the role within the playbook.
         - Are they supported?
