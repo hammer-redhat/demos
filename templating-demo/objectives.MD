@@ -24,6 +24,7 @@
         - Replace lineinfile playbooks
         - idempotency, jobs (Ansible Tower), variables supported
         - Dynamic configuration controlled by inventory groups.
+        - Deploy simple baseline updates faster.
 
 ## 3: /etc/hosts Template
         - demo
