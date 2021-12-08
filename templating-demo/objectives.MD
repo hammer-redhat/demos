@@ -22,7 +22,7 @@
 
 ## 2: Benefit of Using Templates
         - Replace lineinfile playbooks
-        - idempotency, jobs (Ansible Tower), variables supported
+        - idempotent, jobs (Ansible Tower), variables supported
         - Dynamic configuration controlled by inventory groups.
         - Deploy simple baseline updates faster.
 
