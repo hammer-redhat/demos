@@ -1,7 +1,12 @@
-#Ansible Managed
+{{ ansible_managed }}
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
-{% for item in groups['all'] %}
-{{ hostvars[item].ansible_default_ipv4.address }} {{ hostvars[item].ansible_hostname  }}   {{ hostvars[item].ansible_fqdn }}
+192.168.86.62 satellite.hammer.lab satellite
+192.168.86.219  rhel-vm-1.hammer.lab rhel-vm-1
+
+{% for host in play_hosts %}
+{% if 'ansible_eth0' in hostvars[host] %}
+{{ hostvars[host]['ansible_eth0']['ipv4']['address'] }}  {{ host }}
+{% endif %}
 {% endfor %}

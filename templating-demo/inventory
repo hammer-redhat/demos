@@ -1,3 +1,8 @@
-rhel-vm-1.hammer.lab ansible_connection=local
+[satellite]
+satellite.hammer.lab
+
+[controller]
+
+[hosts]
 rhel-vm-2.hammer.lab
 rhel-vm-4.hammer.lab

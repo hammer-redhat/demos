@@ -1,0 +1,13 @@
+---
+- name: Configure /etc/resolv.conf
+  hosts: all
+  become: yes
+  tasks:
+  - name: Deploy resolv.conf.j2 template to hosts.
+    template: 
+      src: files/resolv.conf.j2
+      dest: /etc/resolv.conf
+      owner: root
+      group: root
+      mode: '0644'
+      backup: yes

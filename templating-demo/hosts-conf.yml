@@ -1,6 +1,6 @@
 ---
 - name: Deploy /etc/hosts config file.
-  hosts: all
+  hosts: hosts
   become: yes
   tasks:
   - name: Using the template module deploy /etc/hosts file from thefiles dir.
