@@ -1,0 +1,3 @@
+---
+ - import_playbook: hosts-conf.yml
+ - import_playbook: resolv-conf.yml
