@@ -8,7 +8,7 @@
     - supported options
     - jinja2 syntax
         
-## Directory Structure I prefer
+## Directory Structure (preference)
         testfordemo/
         ├── handlers
         │   └── main.yml (If services need restarted)
@@ -20,9 +20,10 @@
         │   └── vars_file.yml
 
 
-## 2: Benefits of Templating
+## 2: Benefit of Using Templates
         - Replace lineinfile playbooks
-        - idempotency, jobs (Ansible Tower),  
+        - idempotency, jobs (Ansible Tower), variables supported
+        - Dynamic configuration controlled by inventory groups.
 
 ## 3: /etc/hosts Template
         - demo
