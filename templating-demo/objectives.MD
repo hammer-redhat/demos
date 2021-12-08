@@ -8,7 +8,7 @@
     - supported options
     - jinja2 syntax
         
-## Directory Structure I prefer
+## Directory Structure (preference)
         testfordemo/
         ├── handlers
         │   └── main.yml (If services need restarted)
