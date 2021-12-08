@@ -1,0 +1,3 @@
+rhel-vm-1.hammer.lab ansible_connection=local
+rhel-vm-2.hammer.lab
+rhel-vm-4.hammer.lab
