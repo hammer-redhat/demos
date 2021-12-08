@@ -20,9 +20,10 @@
         │   └── vars_file.yml
 
 
-## 2: Benefits of Templating
+## 2: Benefit of Using Templates
         - Replace lineinfile playbooks
-        - idempotency, jobs (Ansible Tower),  
+        - idempotency, jobs (Ansible Tower), variables supported
+        - Dynamic configuration with use of inventory groups.
 
 ## 3: /etc/hosts Template
         - demo
