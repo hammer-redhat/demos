@@ -23,7 +23,7 @@
 ## 2: Benefit of Using Templates
         - Replace lineinfile playbooks
         - idempotency, jobs (Ansible Tower), variables supported
-        - Dynamic configuration with use of inventory groups.
+        - Dynamic configuration controlled by inventory groups.
 
 ## 3: /etc/hosts Template
         - demo
