@@ -5,8 +5,22 @@
 
 ## Objectives:
 ##    1: What are roles?
-    - Why use them? Pros/Cons
+        Roles let you automatically load related vars, files, tasks, handlers, and other Ansible artifacts based on a known file structure. After you group your content in roles, you can easily reuse them and share them with other users.
+
+
+    - Why use them?
+        Pros:
+           - Simplifies playbook content. 
+           - Clean structure makes it easier to update.
+        Cons:
+           - Can be difficult to learn dir structure/functions.
+           - Adds a layer of complexity when troubleshooting. 
     - How to call a role in a playbook.
+        include_role:
+          name: <role_name>
+        roles:
+          - <role_name1>
+          - <role_name2>
         
 ## Role Directory Structure
         testfordemo/
@@ -27,7 +41,7 @@
         └── vars
         └── main.yml
 
-## 2: Creating a Custom Role
+## 2: Creating a Custom Role: HTTPD example
         - ansible-galaxy init <role_name>
         - tree roles/<role_name> 
         - vim roles/<role_name>/tasks/main.yml
