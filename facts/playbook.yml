@@ -1,6 +1,6 @@
 ---
 - name: Get your facts straight
-  hosts: nodes
+  hosts: all
   become: yes
 
   tasks:
