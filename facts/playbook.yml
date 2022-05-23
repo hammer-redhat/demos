@@ -28,7 +28,7 @@
     service_facts:
     tags: fourth_task
 
-  - name: FIFTH TASK | print service facts
-    debug:
-      var: ansible_facts.services['httpd.service']
-    tags: fifth_task
+    #  - name: FIFTH TASK | print service facts
+    #debug:
+    #  var: ansible_facts.services['httpd.service']
+    #tags: fifth_task
