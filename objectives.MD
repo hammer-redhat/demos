@@ -1,5 +1,5 @@
 # Ansible: Roles
-## Chris Hammer, Senior Consultant | <img src="redhat-logo.png" style="width:100px;"/>
+## Chris Hammer, Senior Architect | <img src="redhat-logo.png" style="width:100px;"/>
 ---
 
 
@@ -71,5 +71,3 @@
                 - The effort is based on development of the Linux System Roles upstream project.
                 https://linux-system-roles.github.io/ 
                 
-## Next Session: TBD After the holiday break.  
-## Future Sessions: Administering Ansible Tower 

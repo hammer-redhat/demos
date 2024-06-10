@@ -2,6 +2,7 @@
 - name: ping playbook.
   hosts: all
   become: yes
+  gather_facts: no
   tasks:
     - name: Ping the hosts. 
       ansible.builtin.ping: 
