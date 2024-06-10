@@ -1,6 +1,0 @@
----
-- name: test for syntax
-  hosts: all
-  become: yes
-  tasks:
-

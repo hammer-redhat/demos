@@ -1,0 +1,8 @@
+---
+- name: ping playbook.
+  hosts: all
+  become: yes
+  tasks:
+    - name: Ping the hosts. 
+      ansible.builtin.ping: 
+
