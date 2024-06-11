@@ -1,6 +1,6 @@
 ---
 # Manual path to allow the disconnected install and negate the use of the download role. 
-#aap_setup_prep_installer_file: /home/chrhamme/ansible-automation-platform-setup-2.4-6.tar.gz
+#aap_setup_prep_installer_file: ansible-automation-platform-setup-2.4-6.tar.gz
 aap_setup_prep_process_template: true
 aap_setup_prep_setup_dir: /home/chrhamme/
 aap_setup_down_type: "setup-bundle"
