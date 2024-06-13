@@ -18,6 +18,7 @@
 
 | Function    | Hostname |
 | :--------: | :-------: |
+| Bastion:   |  bastion.lan  |
 | Automation Controller:  | aap.lan  |
 | Automation Hub: | pah.lan  |
 | Execution Node:  | exec-node.lan  |
