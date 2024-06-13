@@ -13,7 +13,7 @@
     - Create an inventory to run our playbooks against.
     - Populate hosts in the newly created inventory.
     - Build a job template to run our playbook from the Github project created and synced earlier. 
-
+---
 - Lab Environment:  
 
 | Function    | Hostname |
