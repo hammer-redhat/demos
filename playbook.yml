@@ -2,6 +2,7 @@
 - name: Test playbook to install packages.
   hosts: all
   become: true
+  gather_facts: no
   tasks:
     - name: Install firewalld packages
       ansible.builtin.package:

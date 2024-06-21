@@ -2,6 +2,7 @@
 - name: Patch hosts with Ansible.
   hosts: all
   become: true
+  gather_facts: no
   tasks:
     - name: Update all packages on RHEL hosts.
       ansible.builtin.package:
