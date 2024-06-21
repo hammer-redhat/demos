@@ -1,0 +1,5 @@
+{
+    "ansible.lightspeed.enabled": true,
+    "ansible.lightspeed.suggestions.enabled": true,
+    "ansible.python.interpreterPath": "/bin/python3"
+}

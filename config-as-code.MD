@@ -21,5 +21,22 @@
 | Bastion:   |  bastion.lan  |
 | Automation Controller:  | aap.lan  |
 | Automation Hub: | pah.lan  |
-| Execution Node:  | exec-node.lan  |
 | Database:  |  db.lan  |
+
+---
+```
+[chrhamme@bastion aap_cac]$ tree
+.
+├── aap_deploy.yml
+├── ansible.cfg
+├── configure_aap.yml
+├── files
+│   ├── controller_auth
+│   ├── id_rsa
+│   └── manifest_automation-controller_20240218T001941Z.zip
+├── inventory_vars
+│   └── variables.yml
+└── reset_aap_ui.yml
+
+2 directories, 8 files
+```
