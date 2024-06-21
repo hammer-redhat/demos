@@ -1,0 +1,10 @@
+---
+- name: Patch hosts with Ansible.
+  hosts: all
+  become: true
+  tasks:
+    - name: Update all packages on RHEL hosts.
+      ansible.builtin.package:
+        name: '*'
+        state: latest
+      when: ansible_os_family == "RedHat"
