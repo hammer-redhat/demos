@@ -1,0 +1,18 @@
+---
+- name: Gather facts on hosts and display them.
+  hosts: all
+  tasks:
+    - name: Display facts about available memory
+      ansible.builtin.debug:
+        msg: '{{ ansible_memtotal_mb }}MB of memory available'
+
+    - name: Run the df -h command
+      ansible.builtin.command: df -h
+      register: df_output
+
+    - name: run the setup module.
+      ansible.builtin.setup:
+
+
+
+
