@@ -3,5 +3,6 @@ users:
   - username: chrhamme
     password: redhat123
     token: 'h3lGKoPFO2zrCpMYp9ImolUuU7LJMT'
+    token_description: 'Test token for {{ username }}'
     scope: write
     host: https://aap.lan
