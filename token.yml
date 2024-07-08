@@ -13,5 +13,5 @@
         controller_username: "{{ item.username }}"
         controller_password: "{{ item.password }}"
         controller_host: "{{ item.host }}"
-        validate_certs=false
+        validate_certs: false
       loop: "{{ users }}"
