@@ -9,7 +9,7 @@
         description: '{{ item.token_description }}'
         scope: "write"
         state: present
-        controller_oauthtoken: "{{ item.token }}"
+#        controller_oauthtoken: "{{ item.token }}"
         controller_username: "{{ item.username }}"
         controller_password: "{{ item.password }}"
         controller_host: "{{ item.host }}"
