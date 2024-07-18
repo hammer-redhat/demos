@@ -7,7 +7,7 @@
     - name: Create a new token using an existing token
       ansible.controller.token:
         description: '{{ item.token_description }}'
-        scope: "write"
+        scope: "read"
         state: present
 #        controller_oauthtoken: "{{ item.token }}"
         controller_username: "{{ item.username }}"
