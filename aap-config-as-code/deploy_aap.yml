@@ -1,0 +1,14 @@
+---
+- name: download and install AAP from the bastion
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: false
+  tags: aap_installation
+
+  vars_files:
+    - inventory_vars/variables.yml
+  roles:
+    - infra.aap_utilities.aap_setup_download
+    - infra.aap_utilities.aap_setup_prepare
+    - infra.aap_utilities.aap_setup_install
