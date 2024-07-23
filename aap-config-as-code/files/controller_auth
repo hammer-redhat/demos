@@ -1,0 +1,5 @@
+[general]
+host=https://controller.example.com
+controller_username= <username>
+oauth_token= <token>
+verify_ssl=false
