@@ -1,8 +1,0 @@
----
-users:
-  - username: chrhamme
-    password: redhat123
-    token: ''
-    token_description: 'Test token for chrhamme'
-    scope: write
-    host: https://aap.lan
