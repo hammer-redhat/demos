@@ -1,0 +1,17 @@
+---
+- name: Configure Oauth2 Tokens for users in AAP.
+  hosts: localhost
+  vars_files:
+    - user_vars.yml
+  tasks:
+    - name: Create a new token using an existing token
+      ansible.controller.token:
+        description: '{{ item.token_description }}'
+        scope: "read"
+        state: present
+#        controller_oauthtoken: "{{ item.token }}"
+        controller_username: "{{ item.username }}"
+        controller_password: "{{ item.password }}"
+        controller_host: "{{ item.host }}"
+        validate_certs: false
+      loop: "{{ users }}"
