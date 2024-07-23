@@ -1,1 +1,13 @@
+[controller]
+aap.lan
+
+[automation-hub]
+pah.lan
+
+[database]
+db.lan
+
+[bastion]
+bastion.lan ansible_connection=local
+
 
