@@ -12,7 +12,3 @@
 
     - name: run the setup module.
       ansible.builtin.setup:
-
-
-
-
