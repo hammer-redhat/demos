@@ -23,7 +23,7 @@
 
     - name: Create Machine credentials for job_template execution. 
       ansible.controller.credential:
-        name: chrhamme-ssh
+        name: username-creds
         organization: Default
         state: present
         credential_type: Machine
