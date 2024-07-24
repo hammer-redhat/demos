@@ -1,0 +1,7 @@
+---
+- name: Example tasks that an Ansible Administrator may be asked to complete.
+  hosts: localhost
+  gather_facts: no
+  tasks: 
+  
+    - name: 
