@@ -24,12 +24,12 @@
 | Database:  |  db.lan  |
 
 ---
-- How to use:
-    - Deploying AAP:
+## How to use:
+- Deploying AAP:
     - Navigate to the `inventory_vars/variables.yml` file and update it according to your environment.
     - After the `variables.yml` is updated save the file and run the playbook command below. 
     - Run: `ansible-playbook deploy_aap.yml`
-    - Config as Code:  
+- Config as Code:  
     - To prepare for the Configuration as Code example you will need to download an AAP manifest from access.redhat.com or provide the `ansible.controller.license` module with username/password credentials.   
     - Next you will need to populate the `files/controller_auth` file with your controller url and admin credentials.   
     - Finally if you wish to use ssh key auth you can upload a private key to `files/id_rsa` to be used as credentials in AAP.   
