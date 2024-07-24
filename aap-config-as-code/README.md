@@ -1,5 +1,5 @@
 # Ansible Automation Platform: Configuration as Code
-## Chris Hammer, Senior Architect, Financial Services - Launch Team | <img src="redhat-logo.png" style="width:100px;"/>
+## Chris Hammer, Senior Architect, Financial Services - Launch Team | <img src="files/redhat-logo.png" style="width:100px;"/>
 ---
 ## Objectives:
 - Review prerequisites for Infrastructure and Configuration as Code deployment.
