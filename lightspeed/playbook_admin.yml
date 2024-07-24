@@ -2,7 +2,8 @@
 - name: Example tasks that an Ansible Administrator may be asked to complete.
   hosts: localhost
   tasks: 
-  
+
+# Uncomment the tasks and then at the end of the task name press 'Enter'. Wait for the Lightspeed suggestion to populate and press 'Tab' to accept the suggestion. 
 #    - name: Update packages on the rhel 8 nodes.
 
 #    - name: reboot when updates were changed
