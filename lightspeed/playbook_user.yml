@@ -1,0 +1,27 @@
+---
+- name: Example playbook for tasks a user might want to use lightspeed for.
+  hosts: localhost
+  gather_facts: no
+  tasks: 
+
+# Uncomment the tasks and then at the end of the task name press 'Enter'. Wait for the Lightspeed suggestion to populate and press 'Tab' to accept the suggestion. 
+#    - name: check if http://example.com is up and running
+
+#    - name: download stuff.txt from http://example.com/pub/ and place it in /tmp
+
+#    - name: send slack notification to channel to notify users.
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
