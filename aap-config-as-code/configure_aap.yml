@@ -17,7 +17,7 @@
         state: present
         credential_type: Source Control
         inputs:
-          username: hammer-redhat
+          username: username
           ssh_key_data: "{{ lookup('file', 'files/id_rsa') }}"
         controller_config_file: files/controller_auth
 
@@ -28,8 +28,8 @@
         state: present
         credential_type: Machine
         inputs:
-          username: chrhamme
-          password: '12!@qwQWasASzxZX'
+          username: username
+          password: 'password'
           ssh_key_data: "{{ lookup('file', 'files/id_rsa') }}"
         controller_config_file: files/controller_auth
 
@@ -53,9 +53,9 @@
 
     - name: Add user as a system administrator
       ansible.controller.user:
-        username: chrhamme
-        password: redhat123
-        email: chrhamme@hammer.org
+        username: username
+        password: password
+        email: username@org.com
         superuser: yes
         state: present
         controller_config_file: files/controller_auth
@@ -77,7 +77,7 @@
     - name: Add the customee Execution Environment to Controller.
       ansible.controller.execution_environment:
         name: "Custom EE"
-        image: pah.lan/hammer/customee
+        image: pah.lan/test/customee
         state: present
         pull: missing
         controller_config_file: files/controller_auth 
