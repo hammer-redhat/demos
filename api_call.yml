@@ -1,53 +1,54 @@
 ---
-- name: Make API calls to AAP.
+- name: Run 10 curl commands. 
   hosts: localhost
   tasks:
     - name: Check that you can connect (GET) to a page and it returns a status 200
       ansible.builtin.uri:
-        url: http://console-openshift-console.apps.openshift.lan
+        url: http://google.com
         validate_certs: false
 
     - name: Check that you can connect (GET) to a page and it returns a status 200
       ansible.builtin.uri:
-        url: http://console-openshift-console.apps.openshift.lan
+        url: http://google.com
         validate_certs: false
 
     - name: Check that you can connect (GET) to a page and it returns a status 200
       ansible.builtin.uri:
-        url: http://console-openshift-console.apps.openshift.lan
+        url: http://google.com
         validate_certs: false
 
     - name: Check that you can connect (GET) to a page and it returns a status 200
       ansible.builtin.uri:
-        url: http://console-openshift-console.apps.openshift.lan
+        url: http://google.com
         validate_certs: false
 
     - name: Check that you can connect (GET) to a page and it returns a status 200
       ansible.builtin.uri:
-        url: http://console-openshift-console.apps.openshift.lan
-        validate_certs: false
-          
-    - name: Check that you can connect (GET) to a page and it returns a status 200
-      ansible.builtin.uri:
-        url: http://console-openshift-console.apps.openshift.lan
-        validate_certs: false
-          
-    - name: Check that you can connect (GET) to a page and it returns a status 200
-      ansible.builtin.uri:
-        url: http://console-openshift-console.apps.openshift.lan
-        validate_certs: false
-          
-    - name: Check that you can connect (GET) to a page and it returns a status 200
-      ansible.builtin.uri:
-        url: http://console-openshift-console.apps.openshift.lan
+        url: http://google.com
         validate_certs: false
 
     - name: Check that you can connect (GET) to a page and it returns a status 200
       ansible.builtin.uri:
-        url: http://console-openshift-console.apps.openshift.lan
+        url: http://google.com
         validate_certs: false
 
     - name: Check that you can connect (GET) to a page and it returns a status 200
       ansible.builtin.uri:
-        url: http://console-openshift-console.apps.openshift.lan
+        url: http://google.com
         validate_certs: false
+
+    - name: Check that you can connect (GET) to a page and it returns a status 200
+      ansible.builtin.uri:
+        url: http://google.com
+        validate_certs: false
+
+    - name: Check that you can connect (GET) to a page and it returns a status 200
+      ansible.builtin.uri:
+        url: http://google.com
+        validate_certs: false
+
+    - name: Check that you can connect (GET) to a page and it returns a status 200
+      ansible.builtin.uri:
+        url: http://google.com
+        validate_certs: false
+
