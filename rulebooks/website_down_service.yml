@@ -1,7 +1,6 @@
 ---
 - name: Restoring apache service
   hosts: nfs.lan
-  remote_user: devops
   become: true
   gather_facts: false
   tasks:
