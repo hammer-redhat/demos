@@ -1,7 +1,6 @@
 ---
 - name: Restoring website content
-  hosts: servera.lab.example.com
-  remote_user: devops
+  hosts: nfs.lan
   become: true
   gather_facts: false
   tasks:

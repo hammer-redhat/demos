@@ -1,13 +1,13 @@
 ---
 - name: Listen for URL events
-  hosts: servera.lab.example.com
+  hosts: nfs.lan
   gather_facts: false
 
   sources:
     - name: Match events from webserver
       ansible.eda.url_check:
         urls:
-          - http://servera.lab.example.com/index.html
+          - http://nfs.lan/index.html
         delay: 10
 
   rules:
