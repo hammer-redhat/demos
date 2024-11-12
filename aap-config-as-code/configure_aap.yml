@@ -7,7 +7,7 @@
   tasks:
     - name: Set the license using a file
       ansible.controller.license:
-        manifest: "files/manifest_automation-controller_20240218T001941Z.zip"
+        manifest: "files/manifest_automation-controller_example.zip"
         controller_config_file: files/controller_auth
 
     - name: Create a SCM/Git credentials to sync project.
@@ -37,7 +37,7 @@
       ansible.controller.project:
         name: "Hammer - Demo"
         organization: "Default"
-        scm_url: git@github.com:hammer-redhat/demos.git
+        scm_url: <github_url>
         scm_type: git
         credential: SCM Credential
         update_project: true
@@ -65,7 +65,7 @@
     - name: Add the customee Execution Environment to Controller.
       ansible.controller.execution_environment:
         name: "Custom EE"
-        image: pah.lan/test/customee
+        image: <private_automation_hub_url/customee:latest>
         state: present
         pull: missing
         controller_config_file: files/controller_auth 
@@ -81,7 +81,7 @@
         forks: 5
         become_enabled: true
         credentials: 
-          - "chrhamme-ssh"
+          - "username-creds"
         controller_config_file: files/controller_auth
 
     - name: Launch a job with inventory and credential
@@ -89,11 +89,3 @@
         job_template: "Ping Hosts"
         controller_config_file: files/controller_auth
         wait: true
-
-    - name: Build a schedule for Demo Job Template
-      ansible.controller.schedule:
-        name: "Run Ping playbook Weekly"
-        state: present
-        controller_config_file: files/controller_auth
-        unified_job_template: "Ping Hosts"
-        rrule: "DTSTART:20240613T130551Z RRULE:FREQ=WEEKLY;INTERVAL=1;COUNT=0"
