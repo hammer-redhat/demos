@@ -50,16 +50,6 @@
         state: present
         controller_config_file: files/controller_auth
 
-
-    - name: Add user as a system administrator
-      ansible.controller.user:
-        username: username
-        password: password
-        email: username@org.com
-        superuser: yes
-        state: present
-        controller_config_file: files/controller_auth
-
     - name: Create and add hosts into Home Lab inventory. 
       ansible.controller.host:
         name: "{{ item }}"
@@ -71,8 +61,6 @@
         - pah.lan
         - db.lan
         - bastion.lan
-        - grafana.lan
-        - prometheus.lan
 
     - name: Add the customee Execution Environment to Controller.
       ansible.controller.execution_environment:

@@ -1,5 +1,6 @@
 [general]
 host=https://controller.example.com
-controller_username= <username>
+username= user
+password= changeme
 oauth_token= <token>
 verify_ssl=false
