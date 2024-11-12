@@ -1,6 +1,6 @@
 ---
 - name: Restoring apache service
-  hosts: servera.lab.example.com
+  hosts: nfs.lan
   remote_user: devops
   become: true
   gather_facts: false
