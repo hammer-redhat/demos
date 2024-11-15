@@ -1,6 +1,6 @@
 ---
 - name: Restoring website content
-  hosts: nfs.lan
+  hosts: all
   become: true
   gather_facts: false
   tasks:

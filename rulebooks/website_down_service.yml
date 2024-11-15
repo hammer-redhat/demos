@@ -1,6 +1,6 @@
 ---
 - name: Restoring apache service
-  hosts: nfs.lan
+  hosts: all
   become: true
   gather_facts: false
   tasks:
