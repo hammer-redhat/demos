@@ -22,6 +22,8 @@
       action:
         run_job_template:
           name: website_down_index.yml
+          organization: Default
+          
           
     - name: Webserver is down (service stopped)
       condition: >
@@ -30,4 +32,6 @@
       action:
         run_job_template:
           name: website_down_service.yml
+          organization: Default
+
 
