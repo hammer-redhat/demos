@@ -14,7 +14,7 @@
     - Populate hosts in the newly created inventory.
     - Build a job template to run our playbook from the Github project created and synced earlier. 
 ---
-- Lab Environment:  
+- Lab Environment: RPM Based Topology
 
 | Function    | Hostname |
 | :--------: | :-------: |
