@@ -23,6 +23,3 @@
         run_job_template:
           name: website_down_index.yml
           organization: Default
-
-
-
