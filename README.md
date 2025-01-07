@@ -19,4 +19,4 @@
     - This is used to configure Event Driven Ansible to automate IT operations of a web server. 
     - The rulebooks can also be used to demonstrate via ansible-rulebook but with minor variations in url_check.yml. 
 
-#### Author: Chris Hammer, Red Hat. 
+#### Author: Chris Hammer, Senior Architect, Red Hat. 
