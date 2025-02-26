@@ -38,7 +38,7 @@ aap_setup_prep_inv_vars:
     receptor_listener_port: 27199
 
     automationhub_admin_password: password
-    automationhub_pg_host: 'db.lan'
+    automationhub_pg_host: ''
     automationhub_pg_port: '5432'
 
     automationhub_pg_database: 'automationhub'
