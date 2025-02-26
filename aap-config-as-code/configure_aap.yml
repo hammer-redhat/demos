@@ -7,7 +7,7 @@
   tasks:
     - name: Set the license using a file
       ansible.controller.license:
-        manifest: "files/manifest_automation-controller_example.zip"
+        manifest: "files/example_manifest.zip"
         controller_config_file: files/controller_auth
 
     - name: Create a SCM/Git credentials to sync project.
@@ -18,7 +18,7 @@
         credential_type: Source Control
         inputs:
           username: username
-          ssh_key_data: "{{ lookup('file', 'files/id_rsa') }}"
+          ssh_key_data: "{{ lookup('file', 'files/ssh-key') }}"
         controller_config_file: files/controller_auth
 
     - name: Create Machine credentials for job_template execution. 
@@ -30,14 +30,14 @@
         inputs:
           username: username
           password: 'password'
-          ssh_key_data: "{{ lookup('file', 'files/id_rsa') }}"
+          ssh_key_data: "{{ lookup('file', 'files/ssh-key') }}"
         controller_config_file: files/controller_auth
 
     - name: Configure SCM project from git to populate playbooks for job templates. 
       ansible.controller.project:
         name: "Hammer - Demo"
         organization: "Default"
-        scm_url: <github_url>
+        scm_url: <git_url>
         scm_type: git
         credential: SCM Credential
         update_project: true
@@ -65,7 +65,7 @@
     - name: Add the customee Execution Environment to Controller.
       ansible.controller.execution_environment:
         name: "Custom EE"
-        image: <private_automation_hub_url/customee:latest>
+        image: <private_automation_hub_url/ee_name:latest>
         state: present
         pull: missing
         controller_config_file: files/controller_auth 
