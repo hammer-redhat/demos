@@ -8,6 +8,8 @@
 
   vars_files:
     - inventory_vars/variables.yml
+
+  #Comment out any roles not being used, for example if you're not downloading the setup bundle directly from RH, then remove the aap_setup_download role. 
   roles:
     - infra.aap_utilities.aap_setup_download
     - infra.aap_utilities.aap_setup_prepare
