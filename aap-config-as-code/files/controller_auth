@@ -2,5 +2,5 @@
 host=https://controller.example.com
 username= user
 password= changeme
-oauth_token= <token>
+#oauth_token= <token>
 verify_ssl=false
