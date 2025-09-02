@@ -7,7 +7,7 @@
 
   rules:
     - name: Run the ping playbook.
-      condition: run-playbook == true
+      condition: run-playbook == True
       action:
         run_job_template:
           name: "Ping Playbook"
