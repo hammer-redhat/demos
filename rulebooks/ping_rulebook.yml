@@ -7,7 +7,7 @@
 
   rules:
     - name: Run the ping playbook.
-      condition: event.payload.run_playbook == true
+      condition: run_playbook == true
       action:
         run_job_template:
           name: "Ping Playbook"
