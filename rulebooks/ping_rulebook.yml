@@ -7,7 +7,7 @@
 
   rules:
     - name: Run the ping playbook.
-      condition: payload.run-playbook is defined
+      condition: run-playbook is defined
       action:
         run_job_template:
           name: "Ping Playbook"
