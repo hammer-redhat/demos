@@ -1,6 +1,7 @@
 ---
 - name: Run the ping playbook when triggered. 
   hosts: all
+  execution_strategy: parallel
   sources:
     - name: AAP 2.5 Event Stream
       ansible.eda.webhook:
