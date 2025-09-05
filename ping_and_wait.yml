@@ -6,8 +6,8 @@
       ansible.builtin.ping:
 
     - name: Wait 60 seconds
-      ansible.builtin.wait_for_connection:
-        timeout: 60
+      ansible.builtin.wait_for:
+        timeout: 120
 
     - name: Ping a host
       ansible.builtin.ping:
