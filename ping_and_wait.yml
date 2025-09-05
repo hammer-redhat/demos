@@ -1,0 +1,14 @@
+---
+- name: Ping a host and test ssh
+  hosts: all
+  tasks:
+    - name: Ping a host
+      ansible.builtin.ping:
+
+    - name: Wait 60 seconds
+      ansible.builtin.wait_for_connection:
+        timeout: 60
+
+    - name: Ping a host
+      ansible.builtin.ping:
+
