@@ -5,6 +5,8 @@
   sources:
     - name: AAP 2.5 Event Stream
       ansible.eda.webhook:
+    - name: AAP 2.5 Event Stream 2
+      ansible.eda.webhook:
 
   rules:
     - name: Run the ping playbook.
