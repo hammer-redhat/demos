@@ -1,0 +1,15 @@
+---
+- name: Run the ping playbook when triggered. 
+  hosts: all
+  execution_strategy: parallel
+  sources:
+    - name: AAP 2.5 Event Stream
+      ansible.eda.webhook:
+
+  rules:
+    - name: Run the ping playbook.
+      condition: event.payload['run-playbook'] == False
+      action:
+        run_job_template:
+          name: "Ping Playbook"
+          organization: "Default"
