@@ -11,15 +11,19 @@
 
     - name: SECOND TASK | using a fact as a variable
       ansible.builtin.debug:
-        msg: "this is my hostname: {{ ansible_hostname }}"
+        msg: "This is my hostname: {{ ansible_hostname }}"
       tags: second_task
 
     - name: THIRD TASK | display a specific fact.
       ansible.builtin.debug:
-        var: ansible_lvm
+        var: ansible_facts.default_ipv4.address
       tags: third_task
 
     - name: FOURTH TASK | Get Service Facts
       ansible.builtin.service_facts:
       tags: fourth_task
 
+    - name: FIFTH TASK | print service facts
+      ansible.builtin.debug:
+        var: ansible_facts.services['httpd.service']
+      tags: fifth_task

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ansible Demo</title>
+  <meta name="description" content="Hands-on introduction to Ansible automation for infrastructure and configuration management.">
+  <style>
+    :root {
+      --bg: #0f1419;
+      --surface: #1a222d;
+      --border: #2d3a4a;
+      --text: #e8eef4;
+      --muted: #8b9cb0;
+      --accent: #ee0000;
+      --accent-dim: #c40000;
+      --code-bg: #121820;
+      --radius: 10px;
+      --font: "Segoe UI", system-ui, -apple-system, sans-serif;
+      --mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: #7eb8ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .banner {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: var(--accent);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .banner h1 {
+      margin: 0;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .banner span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    main {
+      padding: 2.5rem 0 3rem;
+    }
+
+    .lead {
+      font-size: 1.15rem;
+      color: var(--muted);
+      margin: 0 0 2rem;
+    }
+
+    section {
+      margin-bottom: 2.25rem;
+    }
+
+    section h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    section p {
+      margin: 0 0 0.75rem;
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.25rem;
+    }
+
+    .card ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+
+    .card li {
+      margin-bottom: 0.35rem;
+    }
+
+    pre {
+      margin: 0;
+      padding: 1rem 1.1rem;
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      line-height: 1.5;
+      overflow-x: auto;
+      color: #c5d4e6;
+    }
+
+    .hint {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.25rem 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap banner">
+      <div class="logo" aria-hidden="true">A</div>
+      <div>
+        <h1>Ansible Demo</h1>
+        <span>Infrastructure as code · agentless automation</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p class="lead">
+      This page is a simple landing spot for an Ansible walkthrough: playbooks, inventory,
+      and idempotent tasks against your lab hosts.
+    </p>
+
+    <section aria-labelledby="about-heading">
+      <h2 id="about-heading">What you are automating</h2>
+      <div class="card">
+        <p style="margin-top: 0; color: var(--text);">
+          Ansible runs SSH (or WinRM) against hosts you define, applies modules in order,
+          and reports changed vs. ok vs. failed tasks—no agent install required on targets.
+        </p>
+        <ul>
+          <li>Inventory lists hosts and groups (static files or dynamic plugins).</li>
+          <li>Playbooks are YAML: plays, tasks, roles, and handlers.</li>
+          <li>Modules do the real work (packages, files, services, templates, and more).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="flow-heading">
+      <h2 id="flow-heading">Typical demo flow</h2>
+      <p>From your control node, syntax-check and dry-run before applying changes.</p>
+      <pre><code>ansible-playbook site.yml --syntax-check
+ansible-playbook site.yml --check --diff</code></pre>
+      <p class="hint">Remove <code>--check</code> when you are ready to apply for real.</p>
+    </section>
+
+    <section aria-labelledby="links-heading">
+      <h2 id="links-heading">Reference</h2>
+      <p>
+        Official docs:
+        <a href="https://docs.ansible.com/">docs.ansible.com</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Ansible is a registered trademark of Red Hat, Inc. This demo page is for local use only.
+    </div>
+  </footer>
+</body>
+</html>

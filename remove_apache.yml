@@ -1,0 +1,23 @@
+---
+- name: Remove apache
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Remove the httpd package
+      ansible.builtin.package:
+        name: httpd
+        state: absent
+
+    - name: Remove file (delete file)
+      ansible.builtin.file:
+        path: /var/www/html/index.html
+        state: absent
+
+    - name: Undo firewall rules.
+      ansible.builtin.firewalld:
+        port: 80/tcp
+        permanent: true
+        state: disabled
+        immediate: true
+        zone: public

@@ -5,9 +5,9 @@
 
   tasks:
     - name: Ensure the httpd package is installed
-	  ansible.builtin.package:
-  	    name: httpd
-  	    state: present
+      ansible.builtin.package:
+        name: httpd
+        state: present
 
     - name: Create the index.html file
       ansible.builtin.template:
@@ -18,3 +18,11 @@
       ansible.builtin.service:
         name: httpd
         state: started
+
+    - name: Open firewall port 80.
+      ansible.builtin.firewalld:
+        port: 80/tcp
+        permanent: true
+        state: enabled
+        immediate: true
+        zone: public
