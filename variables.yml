@@ -1,12 +1,10 @@
 ---
 - name: Variable playbook test
   hosts: localhost
-
   vars:
     var_one: awesome
     var_two: ansible is
     var_three: "{{ var_two }} {{ var_one }}"
-
   tasks:
     - name: Print out var_three
       ansible.builtin.debug:

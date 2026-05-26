@@ -1,18 +1,24 @@
 ---
 - name: Create user accounts
-  user:
-    name: "{{ item.username }}"
-    groups: "{{ item.groups }}"
-    comment: "{{ item.username }}"
-    state: "{{ item.user_state }}"
+  ansible.builtin.user:
+    name: "{{ item_user['username'] }}"
+    groups: "{{ item_user['groups'] }}"
+    comment: "{{ item_user['username'] }}"
+    state: "{{ item_user['user_state'] }}"
   loop: "{{ users }}"
-
-- name: Add authorized keys
-  authorized_key:
-    user: "{{ item.username }}"
-    key: "{{ lookup('file', 'files/'+ item.username + '.key.pub') }}"
+  loop_control:
+    loop_var: item_user # noqa: var-naming[no-jinja]
+- name: Add authorized keys  # noqa: jinja[invalid]
+  ansible.posix.authorized_key:
+    user: "{{ item_user['username'] }}"
+    key: "{{ lookup('file', 'files/' + item_user['username'] + '.key.pub') }}"
   loop: "{{ users }}"
-
-- name: Change password to expire in 99999 days. 
-  shell: chage -M  99999 "{{ item.username }}"
+  loop_control:
+    loop_var: item_user
+- name: Change password to expire in 99999 days.  # noqa: var-naming[no-jinja]
+  ansible.builtin.command:  # noqa: R101
+    cmd: chage -M  99999 "{{ item_user['username'] }}"
   loop: "{{ users }}"
+  loop_control:
+    loop_var: item_user
+  changed_when: false

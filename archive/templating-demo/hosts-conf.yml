@@ -1,12 +1,12 @@
 ---
 - name: Deploy /etc/hosts config file.
   hosts: hosts
-  become: yes
+  become: true
   tasks:
-  - name: Using the template module deploy /etc/hosts file from thefiles dir.
-    template: 
-      src: files/hosts.j2
-      dest: /etc/hosts
-      owner: root
-      group: root
-      mode: '0644'
+    - name: Using the template module deploy /etc/hosts file from thefiles dir.
+      template:
+        src: files/hosts.j2
+        dest: /etc/hosts
+        owner: root
+        group: root
+        mode: "0644"

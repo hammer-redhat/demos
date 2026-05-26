@@ -4,5 +4,5 @@
   become: true
   vars_files:
     - roles/users/vars/users_vars.yml
-  roles: 
+  roles:
     - users

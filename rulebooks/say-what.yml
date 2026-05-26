@@ -1,7 +1,7 @@
 ---
-- name: say thanks
+- name: Say thanks
   hosts: localhost
   gather_facts: false
   tasks:
     - debug:
-        msg: "Thank you, {{ event.sender | default('my friend') }}!"
+        msg: Thank you, {{ event.sender | default('my friend') }}!

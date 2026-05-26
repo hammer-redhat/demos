@@ -1,14 +1,13 @@
 ---
 - name: Deploy and start Apache HTTPD service
-  hosts: nodes 
+  hosts: nodes
   become: true
- 
   tasks:
     - name: Required packages are installed and up to date
       yum:
         name: httpd
-        state: latest 
-      when: 
+        state: latest
+      when:
         - ansible_distribution == "RedHat"
         - ansible_distribution_major_version == "7"
       register: httpd_state
@@ -17,12 +16,12 @@
       service:
         name: httpd
         state: started
-        enabled: yes
+        enabled: true
       when: httpd_state.changed
 
     - name: Gather service facts
       service_facts:
 
     - name: Get httpd facts.
-      debug: 
+      debug:
         var: ansible_facts.services['httpd.service']
