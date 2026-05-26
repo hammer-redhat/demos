@@ -1,20 +1,19 @@
 ---
 - name: Get your facts straight
   hosts: all
-  become: yes
-
+  become: true
   tasks:
     - name: FIRST TASK | Display facts
       ansible.builtin.debug:
         var: ansible_facts
       tags: first_task
 
-    - name: SECOND TASK | using a fact as a variable
+    - name: SECOND TASK | Using a fact as a variable
       ansible.builtin.debug:
         msg: "this is my hostname: {{ ansible_hostname }}"
       tags: second_task
 
-    - name: THIRD TASK | display a specific fact.
+    - name: THIRD TASK | Display a specific fact.
       ansible.builtin.debug:
         var: ansible_lvm
       tags: third_task
@@ -22,4 +21,3 @@
     - name: FOURTH TASK | Get Service Facts
       ansible.builtin.service_facts:
       tags: fourth_task
-

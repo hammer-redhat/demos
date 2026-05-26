@@ -5,6 +5,6 @@
   tasks:
     - name: Update all packages on RHEL hosts.
       ansible.builtin.package:
-        name: '*'
-        state: latest
-      when: ansible_os_family == "RedHat"
+        name: "*"
+        state: present
+      when: ansible_facts['os_family'] == "RedHat"

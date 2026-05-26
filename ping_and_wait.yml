@@ -11,4 +11,3 @@
 
     - name: Ping a host
       ansible.builtin.ping:
-

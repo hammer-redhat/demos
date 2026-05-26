@@ -1,20 +1,18 @@
 ---
 - name: Testing variables
-  hosts: nodes 
-  become: yes
-  gather_facts: no
+  hosts: nodes
+  become: true
+  gather_facts: false
   vars_files:
     - variables.yml
-
   tasks:
-
     - name: FIRST TASK | install package | Variable included in task
-      yum: 
+      yum:
         name: "{{ install_package }}"
         state: latest
-      vars: 
-        - install_package: firewalld
       tags: first_task
+      vars:
+        - install_package: firewalld
 
     - name: SECOND TASK | Variables in vars_files | Maintain desired state for packages
       yum:

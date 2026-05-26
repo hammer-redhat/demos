@@ -10,8 +10,8 @@
   rules:
     - name: Say Hello
       condition: event.payload.message == "Ansible is super cool"
-  ## Define the action we should take should the condition be met
+      ## Define the action we should take should the condition be met
       action:
         run_job_template:
-          name: "Demo Job Template"
-          organization: "Default"
+          name: Demo Job Template
+          organization: Default

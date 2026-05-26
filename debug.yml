@@ -4,11 +4,13 @@
   tasks:
     - name: Display facts about available memory
       ansible.builtin.debug:
-        msg: '{{ ansible_memtotal_mb }}MB of memory available'
+        msg: "{{ ansible_facts['memtotal_mb'] }}MB of memory available"
 
     - name: Run the df -h command
-      ansible.builtin.command: df -h
+      ansible.builtin.command:
+        cmd: df -h
+      changed_when: false
       register: df_output
 
-    - name: run the setup module.
+    - name: Run the setup module.
       ansible.builtin.setup:

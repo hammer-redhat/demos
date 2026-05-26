@@ -1,40 +1,55 @@
 ---
-
-- name: edit /etc/hosts
-  lineinfile:
+- name: Edit /etc/hosts
+  ansible.builtin.lineinfile:
     dest: /etc/hosts
-    line: "{{ sat6_ip }} {{ sat6_fqdn }} hammer-satellite"
+    line: "{{ sat6_ip | default('') }} {{ sat6_fqdn | default('') }} hammer-satellite" # noqa: var-naming[no-jinja]
+    mode: "0644"
+  when: sat6_ip is defined and sat6_fqdn is defined
 
 - name: Store the ca consumer cert on the host.
-  shell: curl --insecure --output katello-ca-consumer-latest.noarch.rpm https://hammer-satellite.attlocal.net/pub/katello-ca-consumer-latest.noarch.rpm
+  ansible.builtin.get_url:
+    url: https://hammer-satellite.attlocal.net/pub/katello-ca-consumer-latest.noarch.rpm
+    dest: katello-ca-consumer-latest.noarch.rpm
+    validate_certs: false
+  changed_when: false
 
 - name: Install the local ca consumer cert.
-  shell: yum localinstall -y katello-ca-consumer-latest.noarch.rpm
-
-- name: run a sub-man clean to remove any old subscription data.
-  shell: subscription-manager clean
-
-- name: Register the host using the RHEL 8 activation key. 
-  shell: subscription-manager register --org="hammer-lab" --activationkey="host-registration-rhel-8"
-  when: "ansible_distribution_version == '8.3'"
-    
-- name: Register the host using the RHEL 7 activation key. 
-  shell: subscription-manager register --org="hammer-lab" --activationkey="host-registration"
-  when: "ansible_distribution_version == '7.9'"
-
-- name: install required packages
-  yum:
-    name: "{{ item }}"
+  ansible.builtin.yum:
+    name: katello-ca-consumer-latest.noarch.rpm
     state: present
-  loop: "{{ packages }}"
 
-- name: ensure root .ssh directory exists.
-  file: 
+- name: Run a sub-man clean to remove any old subscription data.
+  ansible.builtin.command:
+    cmd: subscription-manager clean
+  changed_when: false
+
+- name: Register the host using the RHEL 8 activation key.
+  ansible.builtin.command:
+    cmd: subscription-manager register --org="hammer-lab" --activationkey="host-registration-rhel-8"
+  when: ansible_facts['distribution_version'] == '8.3'
+  changed_when: false
+
+- name: Register the host using the RHEL 7 activation key.
+  ansible.builtin.command:
+    cmd: subscription-manager register --org="hammer-lab" --activationkey="host-registration"
+  when: ansible_facts['distribution_version'] == '7.9'
+  changed_when: false
+
+- name: Install required packages
+  ansible.builtin.package:
+    name: "{{ packages | default([]) }}"
+    state: present
+
+- name: Ensure root .ssh directory exists.
+  ansible.builtin.file:
     path: /root/.ssh
     state: directory
     owner: root
     group: root
-    mode: 0700
+    mode: "0700"
 
 - name: Configure host for remote execution from Satellite.
-  shell: curl https://hammer-satellite.attlocal.net:9090/ssh/pubkey >> /root/.ssh/authorized_keys
+  ansible.builtin.get_url:
+    url: https://hammer-satellite.attlocal.net:9090/ssh/pubkey
+    dest: /root/.ssh/authorized_keys
+  changed_when: false

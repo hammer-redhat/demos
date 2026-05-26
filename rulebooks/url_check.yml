@@ -2,21 +2,18 @@
 - name: Listen for URL events
   hosts: all
   gather_facts: false
-
   sources:
     - name: Match events from webserver
       ansible.eda.url_check:
         urls:
           - http://nfs.lan/index.html
         delay: 10
-
   rules:
     - name: Webserver is up
       condition: event.url_check.status == "up"
       action:
         debug:
           msg: The website is up and running
-
     - name: Webserver is down
       condition: event.url_check.status == "down"
       action:

@@ -1,8 +1,7 @@
 ---
-- name: ping playbook.
+- name: Ping playbook.
   hosts: all
-  gather_facts: no
+  gather_facts: false
   tasks:
-    - name: Ping the hosts. 
-      ansible.builtin.ping: 
-
+    - name: Ping the hosts.
+      ansible.builtin.ping:
