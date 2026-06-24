@@ -1,0 +1,3 @@
+ansible.cfg
+openshift_cluster_api_summary.md
+openshift_cluster_create_schema.json

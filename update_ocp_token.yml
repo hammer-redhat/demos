@@ -1,0 +1,119 @@
+---
+- name: Generate OpenShift Service Account Token and Update AAP Credential
+  hosts: localhost
+  gather_facts: false
+  vars:
+    # OpenShift variables
+    ocp_api_url: "https://api.hammer.na-launch.com:6443"
+    ocp_namespace: "default"
+    ocp_service_account: "automation-sa"
+    ocp_admin_token: "{{ lookup('env', 'OCP_ADMIN_TOKEN') }}"
+    token_duration: "8760h"  # 1 year
+
+    # AAP variables
+    aap_host: "https://aap-aap.apps.hammer.na-launch.com"
+    aap_username: "chrhamme"
+    aap_password: "{{ lookup('env', 'AAP_PASSWORD') }}"
+    aap_validate_certs: false
+    aap_credential_name: "OpenShift Service Account-Autogen"
+    aap_organization: "Default"
+
+  tasks:
+    - name: Ensure service account exists in OpenShift
+      kubernetes.core.k8s:
+        state: present
+        api_version: v1
+        kind: ServiceAccount
+        name: "{{ ocp_service_account }}"
+        namespace: "{{ ocp_namespace }}"
+        host: "{{ ocp_api_url }}"
+        api_key: "{{ ocp_admin_token }}"
+        validate_certs: false
+      register: service_account
+
+    - name: Delete existing token secret if it exists
+      kubernetes.core.k8s:
+        state: absent
+        api_version: v1
+        kind: Secret
+        name: "{{ ocp_service_account }}-token"
+        namespace: "{{ ocp_namespace }}"
+        host: "{{ ocp_api_url }}"
+        api_key: "{{ ocp_admin_token }}"
+        validate_certs: false
+      ignore_errors: true
+
+    - name: Create new token secret for service account
+      kubernetes.core.k8s:
+        state: present
+        host: "{{ ocp_api_url }}"
+        api_key: "{{ ocp_admin_token }}"
+        validate_certs: false
+        definition:
+          apiVersion: v1
+          kind: Secret
+          metadata:
+            name: "{{ ocp_service_account }}-token"
+            namespace: "{{ ocp_namespace }}"
+            annotations:
+              kubernetes.io/service-account.name: "{{ ocp_service_account }}"
+          type: kubernetes.io/service-account-token
+      register: token_secret
+
+    - name: Wait for token to be generated
+      kubernetes.core.k8s_info:
+        api_version: v1
+        kind: Secret
+        name: "{{ ocp_service_account }}-token"
+        namespace: "{{ ocp_namespace }}"
+        host: "{{ ocp_api_url }}"
+        api_key: "{{ ocp_admin_token }}"
+        validate_certs: false
+      register: secret_info
+      until: secret_info.resources[0].data.token is defined
+      retries: 10
+      delay: 2
+
+    - name: Extract and decode the token
+      set_fact:
+        new_service_account_token: "{{ secret_info.resources[0].data.token | b64decode }}"
+
+    - name: Display token info (masked)
+      debug:
+        msg: "Token generated successfully for {{ ocp_service_account }} (length: {{ new_service_account_token | length }})"
+
+    - name: Create or update AAP credential with new token
+      ansible.controller.credential:
+        name: "{{ aap_credential_name }}"
+        organization: "{{ aap_organization }}"
+        credential_type: "OpenShift or Kubernetes API Bearer Token"
+        state: present
+        inputs:
+          host: "{{ ocp_api_url }}"
+          bearer_token: "{{ new_service_account_token }}"
+          verify_ssl: false
+        controller_host: "{{ aap_host }}"
+        controller_username: "{{ aap_username }}"
+        controller_password: "{{ aap_password }}"
+        validate_certs: "{{ aap_validate_certs }}"
+      register: credential_update
+
+    - name: Confirm credential update
+      debug:
+        msg: "AAP credential '{{ aap_credential_name }}' has been updated with the new OpenShift token"
+      when: credential_update is changed
+
+    - name: Test the new token
+      kubernetes.core.k8s_info:
+        api_version: v1
+        kind: Namespace
+        name: "{{ ocp_namespace }}"
+        host: "{{ ocp_api_url }}"
+        api_key: "{{ new_service_account_token }}"
+        validate_certs: false
+      register: token_test
+      ignore_errors: true
+
+    - name: Report token validation
+      debug:
+        msg: "{{ 'Token is valid and working' if token_test is succeeded else 'Warning: Token validation failed - check service account permissions' }}"
