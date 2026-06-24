@@ -19,10 +19,3 @@
         name: httpd
         state: started
 
-    - name: Open firewall port 80.
-      ansible.builtin.firewalld:
-        port: 80/tcp
-        permanent: true
-        state: enabled
-        immediate: true
-        zone: public
