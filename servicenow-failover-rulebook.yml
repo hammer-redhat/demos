@@ -1,0 +1,36 @@
+---
+- name: Monitor ServiceNow Catalog Requests for AAP Failover
+  hosts: all
+  sources:
+    - servicenow.itsm.records:
+        instance: "{{ servicenow_instance }}"
+        username: "{{ servicenow_username }}"
+        password: "{{ servicenow_password }}"
+        table: sc_request
+        query: "short_descriptionLIKEFailover AAP Dev Instance"
+        interval: 60  # Poll every 60 seconds
+        # Optional: filter by state if needed
+        # query: "short_descriptionLIKEFailover AAP Dev Instance^state=1"
+
+  rules:
+    - name: Trigger Failover Playbook on Match
+      condition: event.record.short_description is match(".*Failover AAP Dev Instance Site 1.*")
+      action:
+        run_job_template:
+          name: "Failover AAP Dev - Site 1"
+          # Optional: pass the request details to the playbook
+          extra_vars:
+            servicenow_request_number: "{{ event.record.number }}"
+            servicenow_sys_id: "{{ event.record.sys_id }}"
+            requested_by: "{{ event.record.requested_for | default('unknown') }}"
+
+        - name: Trigger Failover Playbook on Match
+      condition: event.record.short_description is match(".*Failover AAP Dev Instance Site 2.*")
+      action:
+        run_job_template:
+          name: "Failover AAP Dev - Site 2"
+          # Optional: pass the request details to the playbook
+          extra_vars:
+            servicenow_request_number: "{{ event.record.number }}"
+            servicenow_sys_id: "{{ event.record.sys_id }}"
+            requested_by: "{{ event.record.requested_for | default('unknown') }}"
