@@ -4,14 +4,14 @@
   gather_facts: false
   vars:
     # OpenShift variables
-    ocp_api_url: "https://api.hammer.na-launch.com:6443"
+    ocp_api_url: "https://api.ocp.example.com:6443"
     ocp_namespace: "default"
     ocp_service_account: "automation-sa"
     ocp_admin_token: "{{ lookup('env', 'OCP_ADMIN_TOKEN') }}"
     token_duration: "8760h"  # 1 year
 
     # AAP variables
-    aap_host: "https://aap-aap.apps.hammer.na-launch.com"
+    aap_host: "https://aap-aap.apps.ocp.example.com"
     aap_username: "chrhamme"
     aap_password: "{{ lookup('env', 'AAP_PASSWORD') }}"
     aap_validate_certs: false
