@@ -25,7 +25,7 @@
         fail_msg: "ocp_namespace and app_name must be provided as extra vars."
 
     - name: Gather current Deployment info
-      redhat.openshift.k8s_info:
+      kubernetes.core.k8s_info:
         api_version: apps/v1
         kind: Deployment
         name: "{{ app_name }}"
@@ -84,7 +84,7 @@
       when: app_image is not defined or app_image | length == 0
 
     - name: Wait for rollout to complete
-      redhat.openshift.k8s_info:
+      kubernetes.core.k8s_info:
         api_version: apps/v1
         kind: Deployment
         name: "{{ app_name }}"
