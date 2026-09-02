@@ -25,7 +25,7 @@
         fail_msg: "ocp_namespace and app_name must be provided as extra vars."
 
     - name: Gather current Deployment info
-      kubernetes.core.k8s_info:
+      redhat.openshift.k8s_info:
         api_version: apps/v1
         kind: Deployment
         name: "{{ app_name }}"
@@ -38,7 +38,7 @@
       when: deployment_info.resources | length == 0
 
     - name: Update container image
-      kubernetes.core.k8s:
+      redhat.openshift.k8s:
         state: patched
         definition:
           apiVersion: apps/v1
@@ -55,7 +55,7 @@
       when: app_image is defined and app_image | length > 0
 
     - name: Scale deployment
-      kubernetes.core.k8s:
+      redhat.openshift.k8s:
         state: patched
         definition:
           apiVersion: apps/v1
@@ -68,7 +68,7 @@
       when: app_replicas is defined
 
     - name: Trigger rollout restart (patch restart annotation)
-      kubernetes.core.k8s:
+      redhat.openshift.k8s:
         state: patched
         definition:
           apiVersion: apps/v1
@@ -84,7 +84,7 @@
       when: app_image is not defined or app_image | length == 0
 
     - name: Wait for rollout to complete
-      kubernetes.core.k8s_rollout_info:
+      redhat.openshift.k8s_info:
         api_version: apps/v1
         kind: Deployment
         name: "{{ app_name }}"
@@ -93,12 +93,17 @@
       retries: 30
       delay: 10
       until: >
-        rollout_status.status is defined and
-        rollout_status.status.get('replicas', 0) ==
-        rollout_status.status.get('readyReplicas', 0)
+        rollout_status.resources | length > 0 and
+        rollout_status.resources[0].status is defined and
+        (rollout_status.resources[0].status.conditions | default([])
+          | selectattr('type', 'equalto', 'Available')
+          | selectattr('status', 'equalto', 'True')
+          | list | length) > 0 and
+        rollout_status.resources[0].status.get('updatedReplicas', 0) ==
+        rollout_status.resources[0].status.get('replicas', 0)
 
     - name: Report rollout result
       ansible.builtin.debug:
         msg:
           - "Deployment '{{ app_name }}' in namespace '{{ ocp_namespace }}' rolled out successfully."
-          - "Ready replicas: {{ rollout_status.status.readyReplicas | default(0) }}"
+          - "Ready replicas: {{ rollout_status.resources[0].status.readyReplicas | default(0) }}"
