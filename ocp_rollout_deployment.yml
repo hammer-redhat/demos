@@ -1,0 +1,104 @@
+---
+- name: Rollout deployment on OpenShift
+  hosts: localhost
+  gather_facts: false
+
+  # -----------------------------------------------------------------------
+  # OpenShift auth is handled by an OCP Bearer Token credential attached
+  # to the AAP job template — no auth extra vars needed.
+  #
+  # Required extra vars:
+  #   ocp_namespace   - Target namespace / project
+  #   app_name        - Name of the Deployment
+  #
+  # Optional extra vars:
+  #   app_image       - New container image (leave unset to trigger a rollout restart instead)
+  #   app_replicas    - Desired replica count (leave unset to skip scaling)
+  # -----------------------------------------------------------------------
+
+  tasks:
+    - name: Validate required variables
+      ansible.builtin.assert:
+        that:
+          - ocp_namespace is defined and ocp_namespace | length > 0
+          - app_name is defined and app_name | length > 0
+        fail_msg: "ocp_namespace and app_name must be provided as extra vars."
+
+    - name: Gather current Deployment info
+      kubernetes.core.k8s_info:
+        api_version: apps/v1
+        kind: Deployment
+        name: "{{ app_name }}"
+        namespace: "{{ ocp_namespace }}"
+      register: deployment_info
+
+    - name: Fail if Deployment not found
+      ansible.builtin.fail:
+        msg: "Deployment '{{ app_name }}' not found in namespace '{{ ocp_namespace }}'."
+      when: deployment_info.resources | length == 0
+
+    - name: Update container image
+      kubernetes.core.k8s:
+        state: patched
+        definition:
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: "{{ app_name }}"
+            namespace: "{{ ocp_namespace }}"
+          spec:
+            template:
+              spec:
+                containers:
+                  - name: "{{ app_name }}"
+                    image: "{{ app_image }}"
+      when: app_image is defined and app_image | length > 0
+
+    - name: Scale deployment
+      kubernetes.core.k8s:
+        state: patched
+        definition:
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: "{{ app_name }}"
+            namespace: "{{ ocp_namespace }}"
+          spec:
+            replicas: "{{ app_replicas | int }}"
+      when: app_replicas is defined
+
+    - name: Trigger rollout restart (patch restart annotation)
+      kubernetes.core.k8s:
+        state: patched
+        definition:
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: "{{ app_name }}"
+            namespace: "{{ ocp_namespace }}"
+          spec:
+            template:
+              metadata:
+                annotations:
+                  kubectl.kubernetes.io/restartedAt: "{{ lookup('pipe', 'date -u +%Y-%m-%dT%H:%M:%SZ') }}"
+      when: app_image is not defined or app_image | length == 0
+
+    - name: Wait for rollout to complete
+      kubernetes.core.k8s_rollout_info:
+        api_version: apps/v1
+        kind: Deployment
+        name: "{{ app_name }}"
+        namespace: "{{ ocp_namespace }}"
+      register: rollout_status
+      retries: 30
+      delay: 10
+      until: >
+        rollout_status.status is defined and
+        rollout_status.status.get('replicas', 0) ==
+        rollout_status.status.get('readyReplicas', 0)
+
+    - name: Report rollout result
+      ansible.builtin.debug:
+        msg:
+          - "Deployment '{{ app_name }}' in namespace '{{ ocp_namespace }}' rolled out successfully."
+          - "Ready replicas: {{ rollout_status.status.readyReplicas | default(0) }}"
